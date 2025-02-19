@@ -1,0 +1,52 @@
+{
+  "name": "tool-uri",
+  "version": "0.1.0",
+  "description": "URI (RFC 3986), IRI (RFC 3987), and URI Template (RFC 6570) implementation",
+  "author": "Tool Cognition Inc.",
+  "license": "MIT",
+  "homepage": "https://github.com/toolcog/tool-uri#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toolcog/tool-uri.git"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && prettier --log-level silent --ignore-path '' --write dist/",
+    "check": "tsc --noEmit",
+    "lint": "eslint src/ tests/",
+    "format": "prettier --write src/ tests/",
+    "test": "node --test --conditions=types --experimental-strip-types '**/*.test.ts'",
+    "coverage": "node --test --experimental-strip-types --experimental-test-coverage --conditions=types '**/*.test.ts'",
+    "typedoc": "typedoc --out typedoc/",
+    "size": "size-limit",
+    "clean": "rimraf .turbo dist typedoc",
+    "clean-all": "rimraf .turbo dist typedoc node_modules"
+  },
+  "type": "module",
+  "types": "./src/lib.ts",
+  "main": "./dist/lib.js",
+  "exports": {
+    ".": {
+      "types": "./src/lib.ts",
+      "import": "./dist/lib.js"
+    }
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/node": "^22.13.0",
+    "eslint": "^9.20.0",
+    "eslint-plugin-jsdoc": "^50.6.0",
+    "prettier": "^3.5.0",
+    "rimraf": "^6.0.0",
+    "typedoc": "^0.27.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.24.0"
+  },
+  "size-limit": [
+    {
+      "name": "lib",
+      "path": "dist/lib.js"
+    }
+  ],
+  "packageManager": "pnpm@10.4.1"
+}
